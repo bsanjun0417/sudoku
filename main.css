@@ -97,3 +97,13 @@ header span {
 td.nonclick{
   pointer-events: none;
 }
+
+.minibox{
+  text-align: center;
+  height: 60px;
+  width: 300px;
+  background-color: rgb(198 207 219);
+  color: white;
+  margin-top: 20px;
+  
+}

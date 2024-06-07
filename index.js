@@ -170,9 +170,11 @@ function validateAllRows() {
         if (sum1 == 45){
             testline1 += 1
             console.log(sum1,"a")
-            console.log(testline1,"완성된줄")
+            console.log(testline1,"완성된줄") 
+        $(".text1").textContent = "완성된 가로줄 : "+testline1
         }
     }
+
 }
 
 function sound(data){
@@ -193,3 +195,4 @@ let sudokuBoard = generateSudokuBoard();
 sound()
 add_board()
 number_insert()
+
