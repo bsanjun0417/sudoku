@@ -106,6 +106,7 @@ function checkline(){
         let number1 = Number(td.textContent)
        testnum += number1
        if(testnum == 405){
+        sound("a2")
         alert("o")
        }
 
@@ -135,9 +136,10 @@ $('.sudoku-table td', 'all').forEach(td => {
        // console.log(insert_num)
         e.target.textContent = insert_num
         checkline()
-        
+        sound("a1")//눌렀을때 나는소리
     };
 });
+
 
 }
 
@@ -173,7 +175,21 @@ function validateAllRows() {
     }
 }
 
-
+function sound(data){
+    let audio1 = new Audio('sound1.mp3');
+    let audio2 = new Audio('sound2.mp3');
+    if (data == "a1"){
+        audio1.load();
+        audio1.volume = 1;
+        audio1.play();
+    }
+    else if(data == "a2"){
+        audio2.load();
+        audio2.volume = 1;
+        audio2.play();
+    }
+}
 let sudokuBoard = generateSudokuBoard();
+sound()
 add_board()
 number_insert()
