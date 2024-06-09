@@ -22,7 +22,7 @@ header span {
 .section_main {
     position: relative;
     display: flex;
-    left: 20vw;
+    left: 32vw;
     top: 100px;
 }
 
@@ -106,4 +106,27 @@ td.nonclick{
   color: white;
   margin-top: 20px;
   
+}
+.fbox{
+  width: 600px;
+  height: 500px;
+  border:1px solid black ;
+  border-radius: 20%;
+  position: relative;
+  top: -500px;
+  left: 37vw;
+  background-color: white;
+display: none;
+}
+#img01{
+  width: 300px;
+  position: absolute;
+  left: 25%;
+
+}
+.ftext{
+  font-size: 35px;
+  position: relative;
+  top: 360px;
+  left: 175px;
 }

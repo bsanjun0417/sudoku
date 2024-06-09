@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .timer-section {
+            margin-bottom: 20px;
+        }
+        .timer-section h2 {
+            margin-bottom: 10px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-section">
+        <h2>Countup Timer</h2>
+        <div id="countup-display">0 seconds passed</div>
+        <div class="buttons">
+            <button id="start-countup">Start Countup</button>
+            <button id="stop-countup">Stop Countup</button>
+            <button id="reset-countup">Reset Countup</button>
+        </div>
+    </div>
+
+
+    </div>
+
+    <script>
+        // Countup Timer Variables
+        let countupTimer;
+        let secondsPassed = 0;
+
+        // Countdown Timer Variables
+        let countdownTimer;
+        let timeLeft = 60;
+
+        // Countup Timer Functions
+        function startCountup() {
+            countupTimer = setInterval(() => {
+                secondsPassed++;
+                document.getElementById('countup-display').textContent = `${secondsPassed} seconds passed`;
+            }, 1000);
+        }
+
+        function stopCountup() {
+            clearInterval(countupTimer);
+        }
+
+        function resetCountup() {
+            stopCountup();
+            secondsPassed = 0;
+            document.getElementById('countup-display').textContent = '0 seconds passed';
+        }
+
+        // Countdown Timer Functions
+        function startCountdown() {
+            countdownTimer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById('countdown-display').textContent = 'Time is up!';
+                } else {
+                    document.getElementById('countdown-display').textContent = `${timeLeft} seconds remaining`;
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+
+        function stopCountdown() {
+            clearInterval(countdownTimer);
+        }
+
+        function resetCountdown() {
+            stopCountdown();
+            timeLeft = 60;
+            document.getElementById('countdown-display').textContent = '60 seconds remaining';
+        }
+
+        // Event Listeners for Countup Timer
+        document.getElementById('start-countup').addEventListener('click', startCountup);
+        document.getElementById('stop-countup').addEventListener('click', stopCountup);
+        document.getElementById('reset-countup').addEventListener('click', resetCountup);
+
+    </script>
+</body>
+</html>

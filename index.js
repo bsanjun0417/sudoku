@@ -1,3 +1,6 @@
+let countupTimer;
+let secondsPassed = 0;
+let completed_line =0;
 
 function $(data, all) {
     if (all === undefined) {
@@ -101,23 +104,34 @@ function add_board(){
 
 }
 function checkline(){
+    //게임이 클리어 됬을시 작동방법
     let testnum = 0
+    let finish = false
     $('.sudoku-table td', 'all').forEach((td,index)=> {
         let number1 = Number(td.textContent)
        testnum += number1
-       if(testnum == 405){
+       if(testnum == 405 && completed_line == 9){
         sound("a2")
-        alert("o")
+        $(".section_main").style.display = "block";
+        $(".fbox").style.display = "block";
+        
+        $(".ftext").textContent = `플레이 시간 ${ secondsPassed }초`;
+        finish= true
+        
        }
 
        else{
-        console.log("xxxxxxxxxx")
+        console.log("xxxxxxxxxx",completed_line)
         validateAllRows()
+   
        }
-     
+       
 
     });
     console.log(testnum)
+    if(finish == true){
+        secondsPassed =0
+    }
 }
 function number_insert(){
     let insert_num = ""
@@ -172,14 +186,15 @@ function validateAllRows() {
             console.log(sum1,"a")
             console.log(testline1,"완성된줄") 
         $(".text1").textContent = "완성된 가로줄 : "+testline1
-        }
+            completed_line = testline1
+        }   
     }
 
 }
 
 function sound(data){
     let audio1 = new Audio('sound1.mp3');
-    let audio2 = new Audio('sound2.mp3');
+    let audio2 = new Audio('sound2.wav');
     if (data == "a1"){
         audio1.load();
         audio1.volume = 1;
@@ -191,8 +206,17 @@ function sound(data){
         audio2.play();
     }
 }
+
+function timer(){
+
+
+    countupTimer = setInterval(() => {
+        secondsPassed++;
+     $(".timer").textContent = `Timer : ${secondsPassed} seconds`;
+    }, 1000);
+}
 let sudokuBoard = generateSudokuBoard();
 sound()
 add_board()
 number_insert()
-
+timer()
