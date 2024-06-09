@@ -144,7 +144,9 @@ $('.num_box li','all').forEach(pad =>{
 $(".eraser").onclick = ()=>{
     insert_num = null
 }
-
+$(".replay").onclick = ()=>{
+    location.reload(true);
+}
 $('.sudoku-table td', 'all').forEach(td => {
     td.onclick = (e) => {
        // console.log(insert_num)
